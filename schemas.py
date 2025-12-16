@@ -8,6 +8,10 @@ class CategoryBase(BaseModel):
     description: Optional[str] = None
 class CategoryCreate(CategoryBase):
     pass
+# NEW: Schema for partial updates
+class CategoryUpdate(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
 class Category(CategoryBase):
     id: int
     class Config:
@@ -23,6 +27,14 @@ class MedicineBase(BaseModel):
     category_id: int
 class MedicineCreate(MedicineBase):
     pass
+# NEW: Schema for partial updates
+class MedicineUpdate(BaseModel):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    stock_qty: Optional[int] = None
+    reorder_level: Optional[int] = None
+    expiry_date: Optional[date] = None
+    category_id: Optional[int] = None
 class Medicine(MedicineBase):
     id: int
     class Config:
@@ -35,6 +47,11 @@ class SupplierBase(BaseModel):
     contact: str
 class SupplierCreate(SupplierBase):
     pass
+# NEW: Schema for partial updates
+class SupplierUpdate(BaseModel):
+    company_name: Optional[str] = None
+    contact_person: Optional[str] = None
+    contact: Optional[str] = None
 class Supplier(SupplierBase):
     id: int
     class Config:
